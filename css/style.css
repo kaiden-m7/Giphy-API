@@ -1,0 +1,31 @@
+body {
+    background-image: url(../images/pixlebackground.jpeg); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    height: 900px;
+}
+
+* {
+    box-sizing: border-box;
+ }
+
+
+.btn {
+    margin: 10px;
+    opacity: .8;
+    background-color: black;
+    border-color: orange;
+ }
+
+p {
+     color: white;
+     font-size: 18px;
+ }
+
+h3 {
+    color: white;
+    font-size: 20px;
+
+}
