@@ -18,9 +18,10 @@ $(document).ready(function () {
     console.log(topics);
 
     displayGifsButton();
+    addNewButton();
 
     let music = $(this).attr('data-name');
-    let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + music + "&api_key=dc6zaTOxFJmzC&limit=10";
+    let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + music + "&api_key=dc6zaTOxFJmzC&limit=10"; //url is reading undifined, need to come back and fix that
     
     function displayGifs () {
 
@@ -61,6 +62,19 @@ $(document).ready(function () {
             $(this).attr('data-state', 'animate');
         }
     });
+
+    function addNewButton () {
+        $('#addGif').on('click', function (){
+            let music = $('#topicInput').val().trim();
+            if (music === "") {
+                return false;
+            }
+            topics.push(music);
+
+            displayGifsButton();
+            return false;
+        });
+    }
 
 
 
