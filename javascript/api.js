@@ -19,6 +19,7 @@ $(document).ready(function () {
 
     displayGifsButton();
     addNewButton();
+    removeLastButton();
 
     let music = $(this).attr('data-name');
     let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + music + "&api_key=dc6zaTOxFJmzC&limit=10"; //url is reading undifined, need to come back and fix that
@@ -60,7 +61,7 @@ $(document).ready(function () {
         if (state === 'still') {
             $(this).attr('src', $(this).data('animate'));
             $(this).attr('data-state', 'animate');
-        }
+        } else 
     });
 
     function addNewButton () {
@@ -71,6 +72,14 @@ $(document).ready(function () {
             }
             topics.push(music);
 
+            displayGifsButton();
+            return false;
+        });
+    }
+
+    function removeLastButton () {
+        $('#removeGif').on('click', function (){
+            topics.pop(music);
             displayGifsButton();
             return false;
         });
