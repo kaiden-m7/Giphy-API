@@ -1,5 +1,6 @@
 $(document).ready(function () { 
-    
+   
+
     let topics = ["Johny Cash", "ACDC", 'The Doors', 'Led Zepplin', 'Beastie Boys', 'Frank Sinatra', 'Davis Bowie', 'Hank Williams', 'Queen', 'Daft Punk', 'Bruse Springsteen', 'Wham!']
     //array of music i have chosen that will be buttons to load gifs
 
@@ -12,7 +13,7 @@ $(document).ready(function () {
             gifButton.attr('data-name', topics[i]);
             gifButton.text(topics[i]);
             $('#gifButtonsView').append(gifButton);
-      
+            console.log(topics)
         }
     }
 
@@ -31,7 +32,11 @@ $(document).ready(function () {
                 alert('I guess they dont like that kind of music?')
             }
             for (let i=o; i<results.length; i++){
-
+                let gifDiv = $('<div>');
+                gifDiv.addClass('gifDiv');
+                let gifRating = $('<p>').text("Rating: " + results[i].rating);
+                gifDiv.append(gifRating);
+                let gifImage = $('<img>')
             }   
         })
     
