@@ -21,30 +21,32 @@ $(document).ready(function () {
     addNewButton();
     removeLastButton();
 
-    let music = $(this).attr('data-name');
-    let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + music + "&api_key=dc6zaTOxFJmzC&limit=10"; //url is reading undifined, need to come back and fix that
     
-    function displayGifs () {
-
+    
+    function displayGifs () { //when button clicked gifs appear on screen
+        let music = $(this).attr('data-name'); //giving array value to buttons
+        let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + music + "&api_key=C3SeGI1CQWeWOgv1h2HvFaK5ZX4riIOv&limit=10"; //url is reading undifined, need to come back and fix that
         $.ajax({
             url: queryURL,
             method: 'GET'
         })
         .done(function (response){
+            console.log(response);
             $('#gifsview').empty();
             let results = response.data;
             if (results === "") {
                 alert('I guess they dont like that kind of music?')
             }
-            for (let i=0; i<results.length; i++){
+            for (let i=0; i < results.length; i++){
+
                 let gifDiv = $('<div>');
                 gifDiv.addClass('gifDiv');
                 let gifRating = $('<p>').text("Rating: " + results[i].rating);
                 gifDiv.append(gifRating);
                 let gifImage = $('<img>');
-                gifImage.attr("src", results[i].images.fixed_heigth_small_still.queryURL);
-                gifImage.attr("data-still", results[i].images.fixed_heigth_small_still.queryURL);
-                gifImage.attr("data-animate", results[i].images.fixed_heigth_small.queryURL);
+                gifImage.attr("src", results[i].images.fixed_heigth_small_still.url);
+                gifImage.attr("data-still", results[i].images.fixed_heigth_small_still.url);
+                gifImage.attr("data-animate", results[i].images.fixed_heigth_small.url);
                 gifImage.attr("data-state", "still");
                 gifImage.addClass("image");
                 gifDiv.append(gifImage);
@@ -53,15 +55,16 @@ $(document).ready(function () {
         });
     }
 
-    console.log(queryURL);
-
     $(document).on('click', '.music', displayGifs);
     $(document).on('click', '.image', function(){
         let state = $(this).attr('data-state');
         if (state === 'still') {
             $(this).attr('src', $(this).data('animate'));
             $(this).attr('data-state', 'animate');
-        } else 
+        } else {
+            $(this).attr('src', $(this).data('still'));
+            $(this).attr('data-state', 'still');
+        }
     });
 
     function addNewButton () {
@@ -84,21 +87,6 @@ $(document).ready(function () {
             return false;
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 });
