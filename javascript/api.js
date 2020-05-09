@@ -25,7 +25,7 @@ $(document).ready(function () {
     
     function displayGifs () { //when button clicked gifs appear on screen
         let music = $(this).attr('data-name'); //giving array value to buttons
-        let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + music + "&api_key=C3SeGI1CQWeWOgv1h2HvFaK5ZX4riIOv&limit=10"; //url is reading undifined, need to come back and fix that
+        let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + music + "&api_key=C3SeGI1CQWeWOgv1h2HvFaK5ZX4riIOv&limit=10"; //url is reading undifined, need to come back and fix that
         $.ajax({
             url: queryURL,
             method: 'GET'
@@ -44,9 +44,9 @@ $(document).ready(function () {
                 let gifRating = $('<p>').text("Rating: " + results[i].rating);
                 gifDiv.append(gifRating);
                 let gifImage = $('<img>');
-                gifImage.attr("src", results[i].images.fixed_heigth_small_still.url);
-                gifImage.attr("data-still", results[i].images.fixed_heigth_small_still.url);
-                gifImage.attr("data-animate", results[i].images.fixed_heigth_small.url);
+                gifImage.attr("src", results[i].images.fixed_heigth_small_still);
+                gifImage.attr("data-still", results[i].images.fixed_heigth_small_still);
+                gifImage.attr("data-animate", results[i].images.fixed_heigth_small);
                 gifImage.attr("data-state", "still");
                 gifImage.addClass("image");
                 gifDiv.append(gifImage);

@@ -52,3 +52,14 @@ h3 {
 .form-group {
     margin-top: 10px;
 }
+
+.gifDiv {
+    float: left;
+    margin: 20px;
+}
+
+.image {
+    padding: 5px;
+    border: 2px;
+    border-color: orange;
+}
