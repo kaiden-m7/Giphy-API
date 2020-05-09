@@ -18,8 +18,13 @@ body {
     background-color: black;
     border-color: orange;
     margin-top: 30px;
-   
+    color: white;
  }
+
+.btn-primary {
+    color: white;
+    display: inline;
+}
 
 p {
      color: white;
